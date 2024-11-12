@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mon_bat_db_total</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            align-items: center;
+        }
+        table {
+            margin: 0 auto;
+            width: 95%;
+            height: 100%;
+        }
+        h1 {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            color: white;
+        }
+        tbody {
+            background-color: green;
+            width: 100%;
+            height: 100%;
+        }
+        tr {
+            width: 100%;
+            height: 100%;
+        }
+        td {
+            width: 500px;
+            height: 100px;
+            border: 3px solid black;
+            text-align: center;
+            font-size: 30px;
+        }
+        td:hover {
+            /* background-color: pink; */
+            font-size: 36px;
+            border: 5px solid skyblue;
+        }
+        .alert {
+            background-color: red;
+           /* animation: flash 5s infinite; */
+        }
+
+@keyframes flash {
+    0% {
+        background-color: #ff6600; /* 네온 오렌지 */
+    }
+    50% {
+        background-color: #d3d3d3; /* 어두운 회색 */
+    }
+    100% {
+        background-color: #ff6600; /* 네온 오렌지 */
+    }
+}
+
+
+
+        div {
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            color:white;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Flask API 호출하여 'good-border' 클래스 존재 여부 확인
+            fetch('/api/check-alerts-border')
+                .then(response => response.json())
+                .then(data => {
+                    // URL 상태를 확인하여 .alert 클래스를 추가
+                    const urls = ['host1', 'host2', 'host3', 'host4', 'host5', 'host6', 'host7', 'host8'];
+                    urls.forEach(id => {
+                        if (data[id]) {
+                            document.getElementById(id).classList.add('alert');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+function refreshPage() {
+            setTimeout(function() {
+                location.reload(); // 페이지를 새로 고침합니다.
+            }, 5000); // 10초 후에 실행됩니다.
+        }
+
+        window.onload = function() {
+            refreshPage();
+        };
+    </script>
+    <div>
+        <h1>Batch Monitoring</h1>
+    </div>
+
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td id="host1"><a href="http://host1/mon_batch.jsp">천안</a></td>
+                    <td id="host2"><a href="http://host2/mon_batch.jsp">아산</a></td>
+                    <td id="host3"><a href="http://host3/mon_batch.jsp">삼육</a></td>
+                    <td id="host4"><a href="http://host4/mon_batch.jsp">동강test</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+
+    <div>
+        <h1>DB LOCK</h1>
+    </div>
+
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td id="host5"><a href="http://host5/mon_lock.jsp">천안</a></td>
+                    <td id="host6"><a href="http://host6/mon_lock.jsp">아산</a></td>
+                    <td id="host7"><a href="http://host7/mon_lock.jsp">삼육</a></td>
+                    <td id="host8"><a href="http://host8/mon_lock.jsp">동강test</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
