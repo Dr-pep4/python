@@ -28,7 +28,7 @@ def check_alerts_border():
         'host1': 'http://host1/mon_batch.jsp',
         'host2': 'http://host2/mon_batch.jsp',
         'host3': 'http://host3/mon_batch.jsp',
-        'host4': 'http://10.100.1.10:1080/mon_batch.jsp',
+        'host4': 'http://host4/mon_batch.jsp',
         'host5': 'http://host5/mon_lock.jsp',
         'host6': 'http://host6/mon_lock.jsp',
         'host7': 'http://host7/mon_lock.jsp',
